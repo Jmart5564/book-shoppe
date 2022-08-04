@@ -16,6 +16,15 @@ describe('book routes', () => {
     );
     expect(island).toHaveProperty('released', 1962);
   });
+
+  it('should return a single book by id with author', async () => {
+    const res = await request(app).get('/book/1');
+    expect(res.body).toEqual({
+      title: 'Perdido Street Station',
+      released: 2000,
+      authors: expect.any(Array)
+    });
+  });
   afterAll(() => {
     pool.end();
   });
