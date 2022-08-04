@@ -8,13 +8,13 @@ describe('book routes', () => {
     return setup(pool);
   });
 
-  it('should return a list of books', async () => {
-    const res = await request(app).get('/books');
+  it('should return the full list of books', async () => {
+    const res = await request(app).get('/book');
     expect(res.body.length).toEqual(12);
-    const Island = res.body.find(
+    const island = res.body.find(
       (book) => book.title === 'Island'
     );
-    expect(Island).toHaveProperty('released', 1962);
+    expect(island).toHaveProperty('released', 1962);
   });
   afterAll(() => {
     pool.end();
