@@ -25,6 +25,19 @@ describe('book routes', () => {
       authors: expect.any(Array)
     });
   });
+  it('should add a new book', async () => {
+    const book = {
+      title: 'Anansi Boys',
+      released: 2016
+    };
+    const res = await request(app).post('/book').send(book);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      title: 'Anansi Boys',
+      released: 2016
+    });
+  });
   afterAll(() => {
     pool.end();
   });
