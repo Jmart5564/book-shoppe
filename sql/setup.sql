@@ -13,7 +13,7 @@ CREATE TABLE books (
 CREATE TABLE authors (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
-    dob DATE,
+    dob VARCHAR,
     pob VARCHAR
 );
 

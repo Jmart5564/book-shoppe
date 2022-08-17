@@ -8,8 +8,8 @@ describe('author routes', () => {
     return setup(pool);
   });
 
-  it.skip('should return the full list of authors', async () => {
-    const res = await request(app).get('/author');
+  it('should return the full list of authors', async () => {
+    const res = await request(app).get('/authors');
     expect(res.body.length).toEqual(6);
     const patrick = res.body.find(
       (author) => author.name === 'Patrick Rothfuss'
