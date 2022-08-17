@@ -27,6 +27,19 @@ describe('author routes', () => {
       books: expect.any(Array) 
     });
   });
+  it('#POST /authors should create a new author', async () => {
+    const newAuthor = {
+      name: 'Nick Martin',
+      dob: '1990-04-03',
+      pob: 'Oregon, United States'
+    };
+    const resp = await request(app).post('/authors').send(newAuthor);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newAuthor,
+    });
+  });
 
   afterAll(() => {
     pool.end();
