@@ -18,6 +18,15 @@ describe('author routes', () => {
     expect(patrick).toHaveProperty('pob', 'Wisconsin, United States');
     
   });
+  it('#GET /authors/:id should return a single author', async () => {
+    const resp = await request(app).get('/authors/2');
+    expect(resp.body).toEqual({
+      name: 'China Mieville',
+      dob: '1972-09-06',
+      pob: 'Norwich, United Kingdom',
+      books: expect.any(Array) 
+    });
+  });
 
   afterAll(() => {
     pool.end();
